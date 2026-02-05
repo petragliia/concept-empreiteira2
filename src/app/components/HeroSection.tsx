@@ -1,0 +1,88 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
+export function HeroSection() {
+    return (
+        <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-highlight/5 to-transparent pointer-events-none" />
+            <div className="absolute -top-24 -right-24 w-96 h-96 bg-highlight/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                {/* Text Content */}
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="z-10"
+                >
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="inline-block px-4 py-1.5 rounded-full border border-highlight/20 bg-highlight/5 text-highlight text-sm font-semibold mb-6"
+                    >
+                        EXCELÊNCIA EM CADA DETALHE
+                    </motion.span>
+
+                    <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6">
+                        Construímos o cenário da sua <span className="text-highlight">melhor fase.</span>
+                    </h1>
+
+                    <p className="text-lg md:text-xl text-neutral-400 mb-8 max-w-lg leading-relaxed">
+                        Engenharia de precisão e acabamentos de elite para quem não aceita o "bom o suficiente".
+                        Transformamos projetos ambiciosos em realidade tangível.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <button className="bg-highlight text-primary font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-highlight/90 transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,184,0,0.3)]">
+                            Solicitar Orçamento Exclusivo
+                            <ArrowRight size={20} />
+                        </button>
+                        <button className="border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white/5 transition-colors font-medium">
+                            Ver Portfolio
+                        </button>
+                    </div>
+                </motion.div>
+
+                {/* Image / Visual */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                    className="relative h-[500px] lg:h-[700px] w-full"
+                >
+                    {/* Image Mask Wrapper */}
+                    <div className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 group">
+                        <div className="absolute inset-0 bg-neutral-900 animate-pulse" /> {/* Fallback placeholder */}
+                        {/* 
+                  Replace src with actual image. 
+                  Concept: High-end interior or modern facade. 
+                */}
+                        <img
+                            src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop"
+                            alt="Interior de Luxo"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+
+                        {/* Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60" />
+
+                        {/* Floating Badge */}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.8 }}
+                            className="absolute bottom-8 right-8 glass-panel px-6 py-4 rounded-2xl flex flex-col"
+                        >
+                            <span className="text-highlight font-bold text-2xl">15+</span>
+                            <span className="text-xs text-neutral-300 uppercase tracking-widest">Anos de Mercado</span>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
