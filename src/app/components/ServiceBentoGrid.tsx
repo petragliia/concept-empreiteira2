@@ -29,7 +29,7 @@ const services = [
         description: "Análise de viabilidade e segurança legal para empreendimentos de alto padrão.",
         features: ["Laudos Técnicos", "Regularização", "Gestão de Obra"],
         videoUrl: "https://videos.pexels.com/video-files/3129595/3129595-hd_1280_720_29fps.mp4",
-        imageUrl: "https://images.unsplash.com/photo-1503387837-b15997ef3d36?q=80&w=2700&auto=format&fit=crop" // Engineering/Plans (Unsplash fallback)
+        imageUrl: "/images/consulting.png" // AI Generated
     },
 ];
 
