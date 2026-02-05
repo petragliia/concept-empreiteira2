@@ -8,21 +8,21 @@ const projects = [
         id: 1,
         title: "Residência Alpha",
         category: "Construção",
-        image: "/images/construction.png",
+        image: "/images/residencia_alpha.png",
         location: "Alphaville, SP"
     },
     {
         id: 2,
         title: "Loft Industrial",
         category: "Reforma",
-        image: "/images/renovation.png",
+        image: "/images/loft_industrial.png",
         location: "Vila Madalena, SP"
     },
     {
         id: 3,
         title: "Complexo Corporativo",
         category: "Consultoria",
-        image: "/images/consulting.png",
+        image: "/images/complexo_corporativo.png",
         location: "Faria Lima, SP"
     }
 ];
