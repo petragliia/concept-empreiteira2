@@ -1,9 +1,26 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
+const heroImages = [
+    "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop", // Interior Luxo
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2700&auto=format&fit=crop", // Fachada Moderna
+    "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=2700&auto=format&fit=crop", // Living Room
+    "https://images.unsplash.com/photo-1600570997533-f321908a6e4d?q=80&w=2700&auto=format&fit=crop", // Suite
+];
+
 export function HeroSection() {
+    const [currentImage, setCurrentImage] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentImage((prev) => (prev + 1) % heroImages.length);
+        }, 6000); // 6 seconds per image
+        return () => clearInterval(timer);
+    }, []);
+
     return (
         <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
             {/* Background Elements */}
@@ -47,41 +64,50 @@ export function HeroSection() {
                     </div>
                 </motion.div>
 
-                {/* Image / Visual */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="relative h-[500px] lg:h-[700px] w-full"
-                >
-                    {/* Image Mask Wrapper */}
+                {/* Image / Visual - Slideshow */}
+                <div className="relative h-[500px] lg:h-[700px] w-full">
                     <div className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 group">
-                        <div className="absolute inset-0 bg-neutral-900 animate-pulse" /> {/* Fallback placeholder */}
-                        {/* 
-                  Replace src with actual image. 
-                  Concept: High-end interior or modern facade. 
-                */}
-                        <img
-                            src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop"
-                            alt="Interior de Luxo"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentImage}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 2, ease: "easeInOut" }} // Slower transition (2 seconds)
+                                className="absolute inset-0"
+                            >
+                                <img
+                                    src={heroImages[currentImage]}
+                                    alt={`Slide ${currentImage + 1}`}
+                                    className="w-full h-full object-cover transition-transform duration-[6000ms] ease-linear scale-110 group-hover:scale-100"
+                                />
+                                {/* Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60" />
+                            </motion.div>
+                        </AnimatePresence>
 
-                        {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60" />
-
-                        {/* Floating Badge */}
+                        {/* Constant Badge (Not part of AnimatePresence to avoid flickering) */}
                         <motion.div
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.8 }}
-                            className="absolute bottom-8 right-8 glass-panel px-6 py-4 rounded-2xl flex flex-col"
+                            className="absolute bottom-8 right-8 glass-panel px-6 py-4 rounded-2xl flex flex-col z-20"
                         >
                             <span className="text-highlight font-bold text-2xl">15+</span>
                             <span className="text-xs text-neutral-300 uppercase tracking-widest">Anos de Mercado</span>
                         </motion.div>
+
+                        {/* Progress Indicators */}
+                        <div className="absolute bottom-8 left-8 flex gap-2 z-20">
+                            {heroImages.map((_, i) => (
+                                <div
+                                    key={i}
+                                    className={`h-1 transition-all duration-500 rounded-full ${i === currentImage ? 'w-8 bg-highlight' : 'w-2 bg-white/20'}`}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
