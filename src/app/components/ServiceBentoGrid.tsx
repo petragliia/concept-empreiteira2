@@ -11,7 +11,7 @@ const services = [
         description: "Gestão completa do alicerce ao acabamento. Sua visão materializada com precisão milimétrica.",
         features: ["Gestão 360º", "Cronograma Garantido", "Acabamento Elite"],
         videoUrl: "https://videos.pexels.com/video-files/3796395/3796395-hd_1920_1080_25fps.mp4",
-        imageUrl: "https://images.unsplash.com/photo-1541913080-214307cc3f48?q=80&w=2700&auto=format&fit=crop" // Estrutura/Obra
+        imageUrl: "/images/construction.png" // AI Generated
     },
     {
         id: "02",
@@ -20,7 +20,7 @@ const services = [
         description: "Transformação radical de ambientes com inteligência arquitetônica e respeito à estrutura existente.",
         features: ["Retrofit", "Design de Interiores", "Valorização do Imóvel"],
         videoUrl: "https://videos.pexels.com/video-files/7578546/7578546-uhd_2732_1440_25fps.mp4",
-        imageUrl: "https://images.unsplash.com/photo-1503387762-592be5a52680?q=80&w=2700&auto=format&fit=crop" // Reforma/Arquitetura
+        imageUrl: "/images/renovation.png" // AI Generated
     },
     {
         id: "03",
@@ -29,7 +29,7 @@ const services = [
         description: "Análise de viabilidade e segurança legal para empreendimentos de alto padrão.",
         features: ["Laudos Técnicos", "Regularização", "Gestão de Obra"],
         videoUrl: "https://videos.pexels.com/video-files/3129595/3129595-hd_1280_720_29fps.mp4",
-        imageUrl: "https://images.unsplash.com/photo-1503387837-b15997ef3d36?q=80&w=2700&auto=format&fit=crop" // Engenharia/Planta
+        imageUrl: "https://images.unsplash.com/photo-1503387837-b15997ef3d36?q=80&w=2700&auto=format&fit=crop" // Engineering/Plans (Unsplash fallback)
     },
 ];
 
@@ -48,10 +48,10 @@ export function ServiceBentoGrid() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="text-highlight font-mono text-sm tracking-widest uppercase mb-2 block">services_v2.1</span>
+                        <span className="text-highlight font-mono text-sm tracking-widest uppercase mb-2 block">serviços_v2.2</span>
                         <h2 className="text-5xl md:text-7xl font-heading font-extrabold text-white tracking-tight">
-                            DRAFT TO <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-white">REALITY</span>
+                            DO PROJETO À <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-white">REALIDADE</span>
                         </h2>
                     </motion.div>
                     <p className="text-neutral-500 max-w-sm text-right mt-8 md:mt-0">
@@ -70,12 +70,12 @@ export function ServiceBentoGrid() {
                             transition={{ delay: index * 0.2 }}
                             className="group relative h-[600px] w-full bg-neutral-900 border border-white/5 cursor-pointer overflow-hidden transition-all duration-700 ease-out"
                         >
-                            {/* 0. DEFAULT BACKGROUND IMAGE (Subtle) */}
+                            {/* 0. DEFAULT BACKGROUND IMAGE (Higher Opacity) */}
                             <div className="absolute inset-0 z-0">
                                 <img
                                     src={service.imageUrl}
                                     alt={service.title}
-                                    className="w-full h-full object-cover opacity-20 group-hover:opacity-0 transition-opacity duration-700"
+                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-0 transition-opacity duration-700"
                                 />
                                 <div className="absolute inset-0 bg-neutral-950/40" />
                             </div>
@@ -83,13 +83,13 @@ export function ServiceBentoGrid() {
                             {/* 1. STATE: IDLE (Typographic / Wireframe) */}
                             <div className="absolute inset-0 p-8 flex flex-col justify-between z-20 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none">
                                 <div className="flex justify-between items-start">
-                                    <span className="font-mono text-6xl text-white/5 font-bold stroke-text">{service.id}</span>
+                                    <span className="font-mono text-6xl text-white/10 font-bold stroke-text">{service.id}</span>
                                     <div className="h-[1px] w-12 bg-white/20" />
                                 </div>
                                 <div>
                                     <h3 className="text-4xl font-heading font-black text-white leading-none mb-2">
                                         {service.title}<br />
-                                        <span className="text-neutral-500">{service.subtitle}</span>
+                                        <span className="text-neutral-400">{service.subtitle}</span>
                                     </h3>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@ export function ServiceBentoGrid() {
 
                             {/* Hover Content */}
                             <div className="absolute inset-0 z-30 p-10 flex flex-col justify-end translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                                <span className="text-highlight font-mono text-xs mb-4 tracking-widest">{service.id} // SYSTEM ACTIVATED</span>
+                                <span className="text-highlight font-mono text-xs mb-4 tracking-widest">{service.id} // SISTEMA INTEGRADO</span>
                                 <h3 className="text-3xl font-bold text-white mb-4">{service.title} {service.subtitle}</h3>
                                 <p className="text-neutral-300 mb-6 text-sm leading-relaxed border-l-2 border-highlight pl-4">
                                     {service.description}

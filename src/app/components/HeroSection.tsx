@@ -59,7 +59,7 @@ export function HeroSection() {
                             <ArrowRight size={20} />
                         </button>
                         <button className="border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white/5 transition-colors font-medium">
-                            Ver Portfolio
+                            Ver Portfólio
                         </button>
                     </div>
                 </motion.div>
@@ -86,7 +86,7 @@ export function HeroSection() {
                             </motion.div>
                         </AnimatePresence>
 
-                        {/* Constant Badge (Not part of AnimatePresence to avoid flickering) */}
+                        {/* Constant Badge */}
                         <motion.div
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
