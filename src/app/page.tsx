@@ -2,6 +2,7 @@ import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { StatsSection } from "./components/StatsSection";
 import { ServiceBentoGrid } from "./components/ServiceBentoGrid";
+import { ProjectsSection } from "./components/ProjectsSection";
 import { ContactFooter } from "./components/ContactFooter";
 import { FloatingButton } from "./components/FloatingButton";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <HeroSection />
       <StatsSection />
       <ServiceBentoGrid />
+      <ProjectsSection />
       <ContactFooter />
       <FloatingButton />
     </main>
